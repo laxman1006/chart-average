@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    </head>
+    <body>
+            <div class="row"style="margin-top:7% ;color:green;text-align:center"><h1>Enter students marks and Get Average Mark</h1> </div>
+            
+        <div class="row"style="">
+            <div class="col-xl-12 col-md-12 col-sm-12 col-xs-12">
+            <input type="text" style="margin-left:20%;height:30px;width:240px;border-radius:5px;background-color:lightyellow" name="name"
+                id="sname" value="" placeholder=" Student Name">
+       
+            <input type="number" style=" margin-left:2%;height:30px;width:100px;border-radius:5px;background-color:lightyellow"
+                name="subject1" id="s1" value="" placeholder="subject 1">
+                <input type="number" style="margin-left:1%;height:30px;width:100px;border-radius:5px;background-color:lightyellow"
+                name="subject2" id="s2" value="" placeholder="subject 2">
+                <input type="number" style="margin-left:1%;height:30px;width:100px;border-radius:5px;background-color:lightyellow"
+                name="subject3" id="s3" value="" placeholder="subject 3">
+                <input type="number" style="margin-left:1%;height:30px;width:100px;border-radius:5px;background-color:lightyellow"
+                name="subject4" id="s4" value="" placeholder="Subject 4">
+                <input type="number" style="margin-left:1%;height:30px;width:100px;border-radius:5px;background-color:lightyellow"
+                name="subject5" id="s5" value="" placeholder="Subject 5">
+            <input type="button"
+                style="margin-left:4%;height:30px;width:80px;border-radius:5px;background-color:greenyellow"
+                onclick="Markupdate()" value="add" placeholder="">
+                <canvas id="avg_2" width="00" height="200"style="margin-top:3%"></canvas>
+        </div>
+    </div>
+        <script>
+            var avg;
+            var total;
+            var avg_2=[];
+            var markfinal = document.getElementById('avg_2');
+var avg_3 = new Chart( markfinal, {
+    type: 'bar',
+    data: {
+        labels: ['avg'],
+        datasets: [{
+           
+            data: avg_2,
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+               
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+
+
+           
+             let marklist;
+                $(document).ready(function () {}
+                );
+                function load_average()
+
+                {
+                    marklist={sname:$("#sname").val(),"s1":$("#s1").val(),"s2":$("#s2").val(),"s3":$("#s3").val(),"s4":$("#s4").val(),"s5":$("#s5").val()}
+                   let total=parseInt($("#s1").val())+parseInt($("#s2").val())+parseInt($("#s3").val())+parseInt($("#s4").val())+parseInt($("#s5").val());
+                  let avg=total/5;
+                  alert(avg);
+                  alert(JSON.stringify(avg_2));
+                  avg_2.push(avg);
+                      avg_3.data.labels=(avg_2);
+
+                      avg_3.data.datasets[0].data=(avg_2);
+                      avg_3.update();
+                }
+              
+              
+                function Markupdate()
+                {
+                    if ($("#sname").val() != null &&
+                        $("#sname").val() != '') {
+                        
+                }
+                if ($("#s1").val() != null &&
+                        $("#s1").val() != '') {
+                }
+                if ($("#s2").val() != null &&
+                        $("#s2").val() != '') {
+                            
+                }
+                if ($("#s3").val() != null &&
+                        $("#s3").val() != '') {
+                           
+                }
+                if ($("#s4").val() != null &&
+                        $("#s4").val() != '') {
+                }
+                if ($("#s5").val() != null &&
+                        $("#s5").val() != '') {
+                }
+                load_average();
+                
+                }
+            </script>
+
+
+
+    </body>
